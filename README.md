@@ -27,13 +27,13 @@ L'API offre des fonctionnalités complètes de CRUD (Create, Read, Update, Delet
 1. Clonez le dépôt :
 
    ```
-   git clone https://github.com/RomainRamanzin/ninja-jutsu-api.git
+   git clone https://github.com/RomainRamanzin/ninja_library.git
    ```
 
 2. Installez les dépendances :
 
    ```
-   cd ninja-jutsu-api
+   cd ninja-library
    npm install
    ```
 
@@ -42,6 +42,14 @@ L'API offre des fonctionnalités complètes de CRUD (Create, Read, Update, Delet
    PORT=3000
    MONGODB_URI=mongodb://localhost:27017/ninja_jutsu_db
    ```
+
+## Création du jeu de test
+
+Pour lancer la commande de création de jeu de test :
+
+```
+npm run migration
+```
 
 ## Démarrage du Serveur
 
@@ -153,6 +161,12 @@ Pour exécuter les tests :
 ```
 npm test
 ```
+
+## Collaborateurs
+
+Ce projet a été réaliser par :
+[Sinan Yazici](https://github.com/sinan-yazici)
+et [Romain Ramanzin](https://github.com/RomainRamanzin)
 
 ## Contribution
 
