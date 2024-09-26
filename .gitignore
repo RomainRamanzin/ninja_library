@@ -1,0 +1,70 @@
+# Dépendances
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnpm-debug.log
+
+# Fichiers de build
+dist/
+build/
+out/
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers de log
+logs
+*.log
+
+# Fichiers de système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Fichiers d'éditeur
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Fichiers de couverture de test
+coverage/
+
+# Fichiers temporaires
+tmp/
+temp/
+
+# Fichiers de débogage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers de configuration locale
+.eslintcache
+.stylelintcache
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~
+
+# Fichiers de build spécifiques à certains frameworks (ajustez selon vos besoins)
+# .next/ # pour Next.js
+# .nuxt/ # pour Nuxt.js
+# .cache/ # pour Gatsby
+
+# Fichiers de documentation générés automatiquement
+docs/
+
+# Fichiers de déploiement
+.vercel
+.netlify
+
+# Autres
+*.pid
+*.seed
+*.pid.lock
