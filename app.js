@@ -3,6 +3,7 @@ const connectDB = require('./src/config/db.config');
 const ninjaRoutes = require('./src/v1/routes/ninja.routes');
 const jutsuScrollRoutes = require('./src/v1/routes/jutsuScroll.routes');
 const borrowRoutes = require('./src/v1/routes/borrow.routes');
+const reportRoutes = require('./src/v1/routes/report.routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
 
@@ -20,6 +21,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 app.use('/api/v1/ninjas', ninjaRoutes);
 app.use('/api/v1/jutsu-scrolls', jutsuScrollRoutes);
 app.use('/api/v1/borrows', borrowRoutes);
+app.use('/api/v1/reports', reportRoutes);
 
 // Importation des routes V2
 // app.use('/api/v2/ninjas', ninjaRoutesV2);
