@@ -20,6 +20,31 @@ async function getJutsuRecommendations(req, res) {
     }
 }
 
+async function getJutsuOfTheMonth(req, res) {
+    try {
+        const jutsuOfTheMonth = await recommendationService.getJutsuOfTheMonth();
+
+        if (!jutsuOfTheMonth) {
+            return res.status(404).json({
+                success: false,
+                message: 'Aucun jutsu du mois trouvé pour ce mois-ci'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: jutsuOfTheMonth
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Erreur lors de la récupération du jutsu du mois',
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
-    getJutsuRecommendations
+    getJutsuRecommendations,
+    getJutsuOfTheMonth
 };

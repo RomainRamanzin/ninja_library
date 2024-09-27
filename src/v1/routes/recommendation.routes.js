@@ -4,6 +4,46 @@ const recommendationController = require('../controllers/recommendation.controll
 
 /**
  * @swagger
+ * /api/v1/recommendations/jutsu-of-the-month:
+ *   get:
+ *     summary: Obtenir le jutsu du mois
+ *     tags: [Recommandations]
+ *     description: Récupère le jutsu le plus emprunté du mois en cours avec ses statistiques d'emprunt
+ *     responses:
+ *       200:
+ *         description: Jutsu du mois récupéré avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     rank:
+ *                       type: string
+ *                     category:
+ *                       type: string
+ *                     creator:
+ *                       type: string
+ *                     popularity:
+ *                       type: integer
+ *       404:
+ *         description: Aucun jutsu du mois trouvé
+ *       500:
+ *         description: Erreur serveur
+ */
+router.get('/jutsu-of-the-month', recommendationController.getJutsuOfTheMonth);
+
+
+/**
+ * @swagger
  * /api/v1/recommendations/{ninjaId}:
  *   get:
  *     summary: Obtenir des recommandations de jutsu pour un ninja

@@ -63,6 +63,61 @@ async function getJutsuRecommendations(ninjaId, limit = 5) {
     }
 }
 
+async function getJutsuOfTheMonth() {
+    const currentDate = new Date();
+    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+
+    try {
+        const jutsuOfTheMonth = await Borrow.aggregate([
+            {
+                $match: {
+                    createdAt: { $gte: firstDayOfMonth, $lte: lastDayOfMonth }
+                }
+            },
+            {
+                $group: {
+                    _id: '$jutsuScrollId',
+                    borrowCount: { $sum: 1 }
+                }
+            },
+            {
+                $sort: { borrowCount: -1 }
+            },
+            {
+                $limit: 1
+            },
+            {
+                $lookup: {
+                    from: 'jutsuscrolls',
+                    localField: '_id',
+                    foreignField: '_id',
+                    as: 'jutsuDetails'
+                }
+            },
+            {
+                $unwind: '$jutsuDetails'
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: '$jutsuDetails.name',
+                    rank: '$jutsuDetails.rank',
+                    category: '$jutsuDetails.category',
+                    creator: '$jutsuDetails.creator',
+                    popularity: '$borrowCount'
+                }
+            }
+        ]);
+
+        return jutsuOfTheMonth.length > 0 ? jutsuOfTheMonth[0] : null;
+    } catch (error) {
+        console.error('Erreur lors de la récupération du jutsu du mois:', error);
+        throw error;
+    }
+}
+
 module.exports = {
-    getJutsuRecommendations
+    getJutsuRecommendations,
+    getJutsuOfTheMonth
 };
