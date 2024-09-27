@@ -42,6 +42,7 @@ L'API offre des fonctionnalités complètes de CRUD (Create, Read, Update, Delet
    ```
    PORT=3000
    MONGODB_URI=mongodb://localhost:27017/ninja_jutsu_db
+   JWT_TOKEN=
    ```
 
 ## Création du jeu de test
