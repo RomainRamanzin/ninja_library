@@ -16,6 +16,7 @@ L'API offre des fonctionnalités complètes de CRUD (Create, Read, Update, Delet
 - Express.js
 - MongoDB avec Mongoose
 - Swagger pour la documentation de l'API
+- Jest et Supertest pour les tests unitaires
 
 ## Prérequis
 
@@ -129,17 +130,10 @@ ninja-jutsu-api/
 │   │       └── borrow.model.js
 │   │
 │   ├── v2/
-│   │   ├── routes/
-│   │   │   ├── ninja.routes.js
-│   │   │   ├── jutsuScroll.routes.js
-│   │   │   └── borrow.routes.js
-│   │   └── controllers/
-│   │       ├── ninja.controller.js
-│   │       ├── jutsuScroll.controller.js
-│   │       └── borrow.controller.js
 │   │
 │   ├── config/
-│   │   └── db.config.js
+│   │   ├── db.config.js
+│   │   └── db.memory.config.js
 │   │
 │   └── models/
 │       ├── ninja.model.js
@@ -156,7 +150,7 @@ ninja-jutsu-api/
 
 ## Tests
 
-Pour exécuter les tests :
+Pour exécuter les tests unitaires avec `mongodb-memory-server` :
 
 ```
 npm test
@@ -164,7 +158,7 @@ npm test
 
 ## Collaborateurs
 
-Ce projet a été réaliser par :
+Ce projet a été réalisé par :
 [Sinan Yazici](https://github.com/sinan-yazici)
 et [Romain Ramanzin](https://github.com/RomainRamanzin)
 
