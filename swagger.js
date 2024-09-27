@@ -14,6 +14,20 @@ const options = {
                 description: 'Serveur de développement',
             },
         ],
+        components: {
+            securitySchemes: {
+                BearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [
+            {
+                BearerAuth: [],
+            },
+        ],
     },
     apis: ['./src/v1/routes/*.js'], // Chemin vers vos fichiers de routes
 };

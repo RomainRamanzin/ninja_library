@@ -9,6 +9,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
 const loggerMiddleware = require('./src/v1/middleware/logger.middleware')
 const limiter = require('./src/v1/middleware/rate-limit.middleware')
+const authRoutes = require('./src/v1/routes/auth.routes')
+const authMiddleware = require('./src/v1/middleware/auth.middleware')
+const protectedRoutes = require('./src/v1/routes/protected.routes')
 
 const app = express();
 connectDB();
@@ -29,6 +32,12 @@ app.use('/api/v1/jutsu-scrolls', jutsuScrollRoutes);
 app.use('/api/v1/borrows', borrowRoutes);
 app.use('/api/v1/reports', reportRoutes);
 app.use('/api/v1/recommendations', recommendationRoutes);
+
+// Importation des routes d'Authentification
+app.use('/api/v1/auth', authRoutes);
+
+// Création d'une route de test pour l'authentification
+app.use('/api/v1/protected', protectedRoutes);
 
 // Importation des middlewares
 app.use(loggerMiddleware);
