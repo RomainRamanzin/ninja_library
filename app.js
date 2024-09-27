@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDB = require('./src/config/db.config');
+const { connectDB } = require('./src/config/db.config');
 const ninjaRoutes = require('./src/v1/routes/ninja.routes');
 const jutsuScrollRoutes = require('./src/v1/routes/jutsuScroll.routes');
 const borrowRoutes = require('./src/v1/routes/borrow.routes');
@@ -48,8 +48,10 @@ app.use(loggerMiddleware);
 // app.use('/api/v2/borrows', borrowRoutesV2);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Serveur démarré sur le port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+        console.log(`Serveur démarré sur le port ${PORT}`);
+    });
+}
 
 module.exports = app;

@@ -1,4 +1,4 @@
-const { connectDB, disconnectDB } = require('../config/db.memory.config');
+const { connectDB, disconnectDB } = require('../config/db.config');
 const Ninja = require('../models/ninja.model');
 
 beforeAll(async () => {
