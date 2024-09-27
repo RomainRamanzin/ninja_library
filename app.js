@@ -8,6 +8,7 @@ const recommendationRoutes = require('./src/v1/routes/recommendation.routes')
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
 const loggerMiddleware = require('./src/v1/middleware/logger.middleware')
+const limiter = require('./src/v1/middleware/rate-limit.middleware')
 
 const app = express();
 connectDB();
@@ -15,6 +16,9 @@ connectDB();
 // Autres configurations (routes, middlewares...)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Importation du limiter
+app.use(limiter);
 
 // Route pour la documentation Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
