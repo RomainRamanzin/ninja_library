@@ -7,6 +7,7 @@ const reportRoutes = require('./src/v1/routes/report.routes');
 const recommendationRoutes = require('./src/v1/routes/recommendation.routes')
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
+const loggerMiddleware = require('./src/v1/middleware/logger.middleware')
 
 const app = express();
 connectDB();
@@ -24,6 +25,9 @@ app.use('/api/v1/jutsu-scrolls', jutsuScrollRoutes);
 app.use('/api/v1/borrows', borrowRoutes);
 app.use('/api/v1/reports', reportRoutes);
 app.use('/api/v1/recommendations', recommendationRoutes);
+
+// Importation des middlewares
+app.use(loggerMiddleware);
 
 // Importation des routes V2
 // app.use('/api/v2/ninjas', ninjaRoutesV2);
