@@ -34,6 +34,11 @@ const NinjaSchema = new mongoose.Schema({
     ], // Historique des emprunts
 }, { timestamps: true });
 
+// Index composé pour les requêtes fréquentes de filtrage et de tri
+NinjaSchema.index({ rank: 1, clan: 1, specialite: 1 });
+
+// Index textuel pour la recherche par nom
+NinjaSchema.index({ name: 'text' });
 
 /* Méthode statique : Trouver les ninjas par rang */
 NinjaSchema.statics.findByRank = function (rank) {

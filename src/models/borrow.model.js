@@ -36,6 +36,12 @@ const BorrowSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+// Index composé pour les requêtes fréquentes
+BorrowSchema.index({ ninjaId: 1, jutsuScrollId: 1, status: 1 });
+
+// Index pour les requêtes de date d'échéance
+BorrowSchema.index({ returnDueDate: 1 });
+
 // Middleware avant de sauvegarder un emprunt
 BorrowSchema.pre('save', function (next) {
     // Valider que la date de retour est dans le futur par rapport à la date d'emprunt

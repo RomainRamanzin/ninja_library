@@ -44,5 +44,11 @@ const JutsuScrollSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+// Index composé pour les requêtes fréquentes de filtrage et de tri
+JutsuScrollSchema.index({ rank: 1, category: 1 });
+
+// Index textuel pour la recherche par nom et description
+JutsuScrollSchema.index({ name: 'text', description: 'text' });
+
 // Export du modèle
 module.exports = mongoose.model('JutsuScroll', JutsuScrollSchema);
